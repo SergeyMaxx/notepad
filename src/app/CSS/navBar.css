@@ -1,0 +1,26 @@
+.nav-bar {
+  background-color: #e5e5e5;
+  border-radius: 25px;
+  transition: all 0.2s;
+  margin-right: 15px;
+}
+
+.nav-bar:hover {
+  box-shadow: 2px 2px 6px #147980;
+}
+
+.nav-bar:active {
+  box-shadow: 2px 2px 1px #147980;
+}
+
+.nav-bar .nav-link {
+  color: #747480;
+}
+
+.nav-bar .nav-link:focus {
+  color: #747480;
+}
+
+.nav-bar .nav-link:hover {
+  color: #747480;
+}

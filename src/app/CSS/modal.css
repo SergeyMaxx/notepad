@@ -1,0 +1,49 @@
+.modal_ {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.active {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 1;
+}
+
+.content {
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
+  transform: scale(0.3);
+  transition: all 0.4s;
+  width: 40vw;
+  height: 45vh;
+}
+
+.content-active {
+  transform: scale(1);
+}
+
+.center {
+  padding: 5px 10px;
+  border-radius: 7px;
+}
+
+.header {
+  box-shadow: 5px 5px 10px #818181;
+}
+
+.add {
+  position: absolute;
+  bottom: 30px;
+}

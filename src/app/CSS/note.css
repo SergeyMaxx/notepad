@@ -1,0 +1,96 @@
+.panel {
+  /*color: #fff; !* Цвет текста *!*/
+  padding: 9px; /* Поля вокруг текста */
+  width: 16em; /* Ширина */
+  height: 5em; /* Высота */
+  /*border-radius: 10px; !* Радиус уголков *!*/
+  /*position: relative; !* Относительное позиционирование *!*/
+  /*display: inline-block; !* Располагаем блоки рядом *!*/
+  /*margin-right: 2em; !* Отступ справа *!*/
+  overflow: hidden; /* Скрываем всё, что выходит за пределы блока */
+}
+
+.panel-big {
+  padding: 25px;
+  width: 30.68em;
+  height: 16.5em;
+  overflow: hidden;
+}
+
+/*.panel::before {*/
+/*  content: ''; !* Выводим пустой блок *!*/
+/*  position: absolute; !* Абсолютное позиционирование *!*/
+/*  left: 10px;*/
+/*  right: 10px; !* Устанавливает ширину блока *!*/
+/*  bottom: 0; !* Положение от нижнего края *!*/
+/*  height: 4em; !* Высота *!*/
+/*  background: linear-gradient(to bottom, transparent, #0d6dfc 90%);*/
+/*  pointer-events: none; !* Не реагирует на мышь *!*/
+/*}*/
+
+.card-hover {
+  transition: box-shadow 0.3s;
+}
+
+.card-hover:hover {
+  box-shadow: 0 0 20px black, inset 0 0 0 3px white;
+}
+
+.relative-card {
+  position: relative;
+}
+
+.position-open {
+  position: absolute;
+  bottom: 20px;
+  transition: all 0.3s;
+}
+
+.position-remove {
+  position: absolute;
+  bottom: 20px;
+  right: 17px;
+  transition: all 0.3s;
+}
+
+.header-panel {
+  width: 8em;
+  height: 1.3em;
+  overflow: hidden;
+}
+
+.position-all-notes {
+  position: absolute;
+  bottom: 28px;
+  transition: all 0.3s;
+}
+
+.position-edit-notes {
+  position: absolute;
+  left: 80px;
+  bottom: 28px;
+  transition: all 0.3s;
+}
+
+.position-edit-notes:hover {
+  box-shadow: 0 0 0 3px #000;
+}
+
+.position-all-notes:hover {
+  box-shadow: 0 0 0 3px #000;
+}
+
+.position-remove:hover {
+  box-shadow: 0 0 0 3px #000;
+}
+
+.position-open:hover {
+  box-shadow: 0 0 0 3px #000;
+}
+
+/*.remove {*/
+/*  transform: scale(0);*/
+/*  transition: all 0.4s;*/
+/*  width: 40vw;*/
+/*  height: 40vh;*/
+/*}*/
