@@ -8,8 +8,9 @@
   background-color: #e5e5e5;
   border-radius: 25px;
   padding: 7px;
-  margin: 10px 0 57px 135px;
+  margin: -36px 0 57px 135px;
   transition: 0.3s;
+  width: 1000px;
 }
 
 .search input {

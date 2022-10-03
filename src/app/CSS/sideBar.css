@@ -1,0 +1,85 @@
+body {
+  /*background-color: #273746;*/
+  background-color: #0d1118;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #000;
+  margin: 6px 0 0 40px;
+  transition: 0.4s;
+  z-index: 1000;
+  position: relative;
+}
+
+.open .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.open .bar2 {
+  opacity: 0;
+}
+
+.open .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+.open .navigation {
+  width: 300px;
+}
+
+.navigation {
+  width: 0;
+  height: 100%;
+  /*background-color: #2980B9;*/
+  background-color: #b0aaaa;
+  overflow: hidden;
+  color: white;
+  padding-top: 150px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  position: fixed;
+  transition: 0.2s;
+}
+
+.link {
+  font-family: "Segoe UI Light", sans-serif;
+  padding: 8px 8px 8px 72px;
+  text-decoration: none;
+  font-size: 25px;
+  /*color: #a6acaf;*/
+  color: #000;
+  display: block;
+  transition: 0.3s;
+  border: none;
+  background: #b0aaaa;
+}
+
+.link:hover {
+  color: white;
+}
+
+#button1 {
+  font-size: 40px;
+}
+
+.navigation .end-nav {
+  top: 0;
+  right: 25px;
+  margin-left: 30px;
+  font-size: 24px;
+  position: absolute;
+}
+
+.menu-bar {
+  margin-top: 35px;
+  width: 75px;
+}
+
+.menu-icon {
+  width: 75px;
+}

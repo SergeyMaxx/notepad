@@ -1,10 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import '../CSS/note.css'
 import {useHistory} from 'react-router-dom'
+import ModalConfirmation from './modalConfirmation'
 
-const Note = ({note, remove}) => {
+const Note = ({note, remove, noteHistory, text, icon, buttonText}) => {
   const history = useHistory()
+  const [modalActive, setModalActive] = useState(false)
+
+  const removeNote = () => {
+    setModalActive(false)
+    remove(note.id)
+  }
 
   return (
     <div
@@ -18,19 +25,29 @@ const Note = ({note, remove}) => {
         <p className="container card-text panel">
           {note.newNote}
         </p>
-        <p style={{marginBottom: 0}}>{note.date}</p>
+        <div className="d-flex">
+          <p className="date">{note.date}</p>
+          <p>{note.time}</p>
+        </div>
         <button
           className="btn btn-outline-light position-open"
-          onClick={() => history.push(`/${note.id}`)}
+          onClick={() => history.push(`/${noteHistory}`)}
         >
           <i className="bi bi-book"/>
         </button>
         <button
           className="btn btn-outline-light position-remove"
-          onClick={() => remove(note.id)}
+          onClick={() => setModalActive(true)}
         >
-          <i className="bi bi-trash"/>
+          <i className={icon}/>
         </button>
+        <ModalConfirmation
+          active={modalActive}
+          setActive={setModalActive}
+          remove={removeNote}
+          confirmationText={text}
+          buttonText={buttonText}
+        />
       </div>
     </div>
   )
@@ -38,7 +55,11 @@ const Note = ({note, remove}) => {
 
 Note.propTypes = {
   note: PropTypes.object,
-  remove: PropTypes.func
+  remove: PropTypes.func,
+  noteHistory: PropTypes.string,
+  text: PropTypes.string,
+  icon: PropTypes.string,
+  buttonText: PropTypes.string
 }
 
 export default Note

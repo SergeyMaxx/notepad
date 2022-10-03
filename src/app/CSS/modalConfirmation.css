@@ -1,0 +1,74 @@
+.modal-conf {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.active-conf {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 1;
+}
+
+.content-conf {
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
+  transform: scale(0.3);
+  transition: all 0.4s;
+  width: 29vw;
+  height: 25vh;
+}
+
+.content-active-conf {
+  transform: scale(1);
+}
+
+.modal-header {
+  font-family: "Segoe UI Light", sans-serif;
+  color: black;
+  margin: 10px 0 45px 15px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cancel {
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: #e5e5e5;
+  color: #747480;
+  font-weight: 900;
+  transition: all 0.3s;
+  border: 2px solid forestgreen;
+}
+
+.remove {
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: #e5e5e5;
+  color: #747480;
+  font-weight: 900;
+  transition: all 0.3s;
+  border: 2px solid red;
+}
+
+.cancel:hover {
+  box-shadow: 0 0 0 5px forestgreen, inset 0 0 10px forestgreen;
+}
+
+.remove:hover {
+  box-shadow: 0 0 0 5px red, inset 0 0 10px red;
+}

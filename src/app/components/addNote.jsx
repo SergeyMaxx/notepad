@@ -1,17 +1,16 @@
 import React, {useState} from 'react'
 import Modal from './modal'
 import PropTypes from 'prop-types'
-import Search from './search'
 
-const AddNote = ({addNote, setSearchText}) => {
+const AddNote = ({addNote}) => {
   const [modalActive, setModalActive] = useState(false)
 
   return (
-    <div className="d-flex mt-3">
-      <Search setSearchText={setSearchText}/>
+    <div className="d-flex mt-2">
+      {/*<Search setSearchText={setSearchText}/>*/}
       <button
-        style={{margin: '10px 135px 0 170px'}}
-        className="btn btn-outline-dark h-25"
+        style={{margin: '-41px 135px 0 100px', height: 40}}
+        className="btn btn-outline-dark"
         onClick={() => setModalActive(true)}
       >
         <i className="bi bi-plus-square"/>
@@ -27,8 +26,7 @@ const AddNote = ({addNote, setSearchText}) => {
 }
 
 AddNote.propTypes = {
-  addNote: PropTypes.func,
-  setSearchText: PropTypes.func
+  addNote: PropTypes.func
 }
 
 export default AddNote

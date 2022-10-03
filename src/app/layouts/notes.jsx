@@ -1,12 +1,16 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {useParams} from 'react-router-dom'
 import NotePage from '../components/notePage'
 import NotesList from '../components/notesList'
+import {useNote} from '../components/noteContext'
 
 const Notes = () => {
+  const {notes} = useNote()
+  const {setNotes} = useNote()
+  const {notesBasket} = useNote()
+  const {setNotesBasket} = useNote()
   const params = useParams()
   const {noteId} = params
-  const [notes, setNotes] = useState([])
   const [searchText, setSearchText] = useState('')
 
   const arrColor = [
@@ -20,17 +24,6 @@ const Notes = () => {
   const randomNum = () => Math.floor(Math.random() * arrColor.length)
   const index = arrColor.indexOf(arrColor[randomNum(0, arrColor.length - 1)])
 
-  useEffect(() => {
-    const savedNotes = JSON.parse(localStorage.getItem('notes-react'))
-    if (savedNotes) {
-      setNotes(savedNotes)
-    }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('notes-react', JSON.stringify(notes))
-  }, [notes])
-
   const addNote = (userInput, userInputHeader) => {
     if (userInput || userInputHeader) {
       const oldItem = {
@@ -38,7 +31,8 @@ const Notes = () => {
         newNote: userInput,
         header: userInputHeader,
         noteColor: arrColor[index],
-        date: new Date().toLocaleDateString()
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString()
       }
       setNotes([...notes, oldItem])
     }
@@ -53,6 +47,7 @@ const Notes = () => {
 
   const removeNote = id => {
     setNotes([...notes.filter(note => note.id !== id)])
+    setNotesBasket([...notesBasket, ...notes.filter(note => note.id === id)])
   }
 
   return (
