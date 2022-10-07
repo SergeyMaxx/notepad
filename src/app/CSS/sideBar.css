@@ -1,12 +1,12 @@
 body {
-  /*background-color: #273746;*/
-  background-color: #0d1118;
+  background-color: #273746 !important;
+  /*background-color: #0d1118;*/
 }
 
 .bar1, .bar2, .bar3 {
   width: 35px;
   height: 5px;
-  background-color: #000;
+  background-color: #b0afaf;
   margin: 6px 0 0 40px;
   transition: 0.4s;
   z-index: 1000;
@@ -35,7 +35,7 @@ body {
   width: 0;
   height: 100%;
   /*background-color: #2980B9;*/
-  background-color: #b0aaaa;
+  background-color: #3a4f67;
   overflow: hidden;
   color: white;
   padding-top: 150px;
@@ -52,15 +52,17 @@ body {
   text-decoration: none;
   font-size: 25px;
   /*color: #a6acaf;*/
-  color: #000;
+  color: #b0afaf;
   display: block;
   transition: 0.3s;
   border: none;
-  background: #b0aaaa;
+  background: #3a4f67;
+  font-weight: 900;
 }
 
 .link:hover {
   color: white;
+  text-shadow: 0 0 10px white;
 }
 
 #button1 {
@@ -78,6 +80,7 @@ body {
 .menu-bar {
   margin-top: 35px;
   width: 75px;
+  cursor: pointer;
 }
 
 .menu-icon {

@@ -1,13 +1,13 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import '../CSS/note.css'
+import '../../CSS/note.css'
 import {useHistory} from 'react-router-dom'
-import EditNoteModal from './editNoteModal'
+import EditNoteModal from '../editNoteModal'
 
-const NotePage = ({noteId, notes, editNote}) => {
+const FavoritesPage = ({favoritesNoteId, notesFavorites, editNote}) => {
   const [modalActive, setModalActive] = useState(false)
   const history = useHistory()
-  const getById = notes.find(note => note.id === noteId)
+  const getById = notesFavorites.find(note => note.id === favoritesNoteId)
 
   return (
     <div
@@ -28,7 +28,7 @@ const NotePage = ({noteId, notes, editNote}) => {
           {getById.newNote}
         </p>
         <button
-          onClick={() => history.push('/')}
+          onClick={() => history.push('/favorites')}
           className="btn btn-secondary mt-5 position-all-notes"
         >
           <i className="bi bi-journals"/>
@@ -51,10 +51,10 @@ const NotePage = ({noteId, notes, editNote}) => {
   )
 }
 
-NotePage.propTypes = {
-  noteId: PropTypes.string,
-  notes: PropTypes.array,
+FavoritesPage.propTypes = {
+  favoritesNoteId: PropTypes.string,
+  notesFavorites: PropTypes.array,
   editNote: PropTypes.func
 }
 
-export default NotePage
+export default FavoritesPage

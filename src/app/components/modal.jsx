@@ -7,7 +7,7 @@ const Modal = ({active, setActive, addNote}) => {
   const [userInputHeader, setUserInputHeader] = useState('')
 
   const characterLimit = 800
-  const headerCharacterLimit = 60
+  const headerCharacterLimit = 40
 
   const handleChange = ({target}) => {
     if (characterLimit - target.value.length >= 0) {

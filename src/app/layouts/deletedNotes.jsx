@@ -1,12 +1,11 @@
 import React from 'react'
 import {useParams} from 'react-router-dom'
-import Basket from './basket'
-import DeletedNotePage from './deletedNotePage'
-import {useNote} from './noteContext'
+import BasketList from '../components/basketList'
+import DeletedNotePage from '../components/page/deletedNotePage'
+import {useNote} from '../components/noteContext'
 
-const DeletedPage = () => {
+const DeletedNotes = () => {
   const {notesBasket} = useNote()
-  const {setNotesBasket} = useNote()
   const params = useParams()
   const {deletedNoteId} = params
 
@@ -16,12 +15,11 @@ const DeletedPage = () => {
         ? <DeletedNotePage
           deletedNoteId={deletedNoteId}
           notesBasket={notesBasket}
-          setNotesBasket={setNotesBasket}
         />
-        : <Basket/>
+        : <BasketList/>
       }
     </>
   )
 }
 
-export default DeletedPage
+export default DeletedNotes

@@ -7,10 +7,9 @@ const AddNote = ({addNote}) => {
 
   return (
     <div className="d-flex mt-2">
-      {/*<Search setSearchText={setSearchText}/>*/}
       <button
-        style={{margin: '-41px 135px 0 100px', height: 40}}
-        className="btn btn-outline-dark"
+        style={{marginLeft: 30, background: '#273746'}}
+        className="link"
         onClick={() => setModalActive(true)}
       >
         <i className="bi bi-plus-square"/>

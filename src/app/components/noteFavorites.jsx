@@ -1,27 +1,9 @@
-import React, {useState} from 'react'
-import PropTypes from 'prop-types'
-import '../CSS/note.css'
+import React from 'react'
 import {useHistory} from 'react-router-dom'
-import ModalConfirmation from './modalConfirmation'
+import PropTypes from 'prop-types'
 
-const Note = ({
-                note,
-                remove,
-                noteHistory,
-                text,
-                icon,
-                buttonText,
-                favoritesToggle,
-                optionFavoritesNote
-              }) => {
-
+const NoteFavorites = ({note, noteHistory, favoritesToggle, optionFavoritesNote}) => {
   const history = useHistory()
-  const [modalActive, setModalActive] = useState(false)
-
-  const removeNote = () => {
-    setModalActive(false)
-    remove(note.id)
-  }
 
   const toggleFavorites = () => {
     favoritesToggle(note.id)
@@ -56,33 +38,16 @@ const Note = ({
         >
           <i className={note.favoritesStatus ? 'bi bi-heart-fill' : 'bi bi-heart'}/>
         </button>
-        <button
-          className="btn btn-outline-light position-remove"
-          onClick={() => setModalActive(true)}
-        >
-          <i className={icon}/>
-        </button>
-        <ModalConfirmation
-          active={modalActive}
-          setActive={setModalActive}
-          remove={removeNote}
-          confirmationText={text}
-          buttonText={buttonText}
-        />
       </div>
     </div>
   )
 }
 
-Note.propTypes = {
+NoteFavorites.propTypes = {
   note: PropTypes.object,
-  remove: PropTypes.func,
   noteHistory: PropTypes.string,
-  text: PropTypes.string,
-  icon: PropTypes.string,
-  buttonText: PropTypes.string,
   optionFavoritesNote: PropTypes.func,
   favoritesToggle: PropTypes.func
 }
 
-export default Note
+export default NoteFavorites

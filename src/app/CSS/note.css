@@ -33,7 +33,7 @@
 }
 
 .card-hover:hover {
-  box-shadow: 0 0 20px black, inset 0 0 0 3px white;
+  box-shadow: 0 0 20px #ffffff, inset 0 0 5px 5px #273746;
 }
 
 .relative-card {
@@ -43,6 +43,13 @@
 .position-open {
   position: absolute;
   bottom: 20px;
+  transition: all 0.3s;
+}
+
+.position-favorites {
+  position: absolute;
+  bottom: 20px;
+  left: 75px;
   transition: all 0.3s;
 }
 
@@ -85,6 +92,10 @@
 }
 
 .position-open:hover {
+  box-shadow: 0 0 0 3px #000;
+}
+
+.position-favorites:hover {
   box-shadow: 0 0 0 3px #000;
 }
 

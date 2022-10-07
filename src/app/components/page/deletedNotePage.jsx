@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import '../CSS/note.css'
+import '../../CSS/note.css'
 import {useHistory} from 'react-router-dom'
 
 const DeletedNotePage = ({deletedNoteId, notesBasket}) => {
@@ -31,12 +31,6 @@ const DeletedNotePage = ({deletedNoteId, notesBasket}) => {
         >
           <i className="bi bi-journals"/>
         </button>
-        {/*<button*/}
-        {/*  onClick={() => returnNote(getById.id)}*/}
-        {/*  className="btn btn-secondary mx-2 position-edit-notes"*/}
-        {/*>*/}
-        {/*  <i className="bi bi-box-arrow-in-up-left"/>*/}
-        {/*</button>*/}
       </div>
     </div>
   )

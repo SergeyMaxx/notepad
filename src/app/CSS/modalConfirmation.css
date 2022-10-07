@@ -23,7 +23,7 @@
 .content-conf {
   padding: 20px;
   border-radius: 10px;
-  background: #fff;
+  background: rgb(150, 151, 159);
   transform: scale(0.3);
   transition: all 0.4s;
   width: 29vw;
@@ -36,7 +36,7 @@
 
 .modal-header {
   font-family: "Segoe UI Light", sans-serif;
-  color: black;
+  color: white;
   margin: 10px 0 45px 15px;
 }
 
@@ -52,7 +52,7 @@
   color: #747480;
   font-weight: 900;
   transition: all 0.3s;
-  border: 2px solid forestgreen;
+  border: 2px solid #747480;
 }
 
 .remove {
@@ -62,13 +62,13 @@
   color: #747480;
   font-weight: 900;
   transition: all 0.3s;
-  border: 2px solid red;
+  border: 2px solid #747480;
 }
 
 .cancel:hover {
-  box-shadow: 0 0 0 5px forestgreen, inset 0 0 10px forestgreen;
+  box-shadow: 0 0 0 5px white, inset 0 0 15px green;
 }
 
 .remove:hover {
-  box-shadow: 0 0 0 5px red, inset 0 0 10px red;
+  box-shadow: 0 0 0 5px white, inset 0 0 15px red;
 }

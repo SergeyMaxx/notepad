@@ -5,17 +5,18 @@
 .search {
   display: flex;
   align-items: center;
-  background-color: #e5e5e5;
+  background-color: #ababb0;
   border-radius: 25px;
   padding: 7px;
   margin: -36px 0 57px 135px;
   transition: 0.3s;
-  width: 1000px;
+  width: 900px;
 }
 
 .search input {
   border: none;
-  background-color: #e5e5e5;
+  background-color: #ababb0;
+  color: black;
 }
 
 .search input:focus {
@@ -24,8 +25,8 @@
 
 .inp {
   margin-left: 5px;
-  width: 1000px;
+  width: 900px;
 }
 .search:hover {
-  box-shadow: 0 0 5px 3px #147980;
+  box-shadow: 0 0 5px 3px #ffffff;
 }

@@ -19,13 +19,22 @@ const SideBar = () => {
           <div className="bar3">{''}</div>
         </div>
         <div id="end-nav" className="navigation">
-          <button className="link" onClick={() => history.push('/')}>Notes</button>
-          <button className="link" onClick={() => ''}>Новое</button>
-          <button className="link" onClick={() => ''}>Избранное</button>
+          <button className="link" onClick={() => history.push('/')}>
+            <i className="bi bi-book me-3"/>
+            Заметки
+          </button>
+          <button className="link" onClick={() => history.push('/favorites')}>
+            <i className="bi bi-heart me-3"/>
+            Избранное
+          </button>
           <button className="link" onClick={() => history.push('/basket')}>
+            <i className="bi bi-trash me-3"/>
             Корзина
           </button>
-          <button className="link" onClick={() => ''}>Тема</button>
+          <button className="link" onClick={() => ''}>
+            <i className="bi bi-moon me-3"/>
+            Тема
+          </button>
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useParams} from 'react-router-dom'
-import NotePage from '../components/notePage'
+import NotePage from '../components/page/notePage'
 import NotesList from '../components/notesList'
 import {useNote} from '../components/noteContext'
 
@@ -9,6 +9,8 @@ const Notes = () => {
   const {setNotes} = useNote()
   const {notesBasket} = useNote()
   const {setNotesBasket} = useNote()
+  const {notesFavorites} = useNote()
+  const {setNotesFavorites} = useNote()
   const params = useParams()
   const {noteId} = params
   const [searchText, setSearchText] = useState('')
@@ -32,7 +34,8 @@ const Notes = () => {
         header: userInputHeader,
         noteColor: arrColor[index],
         date: new Date().toLocaleDateString(),
-        time: new Date().toLocaleTimeString()
+        time: new Date().toLocaleTimeString(),
+        favoritesStatus: false
       }
       setNotes([...notes, oldItem])
     }
@@ -48,6 +51,19 @@ const Notes = () => {
   const removeNote = id => {
     setNotes([...notes.filter(note => note.id !== id)])
     setNotesBasket([...notesBasket, ...notes.filter(note => note.id === id)])
+    setNotesFavorites([...notesFavorites.filter(note => note.id !== id)])
+  }
+
+  const favoritesToggle = id => {
+    const newStatus = notes.find(note => note.id === id)
+    newStatus.favoritesStatus = !newStatus.favoritesStatus
+    setNotes([...notes])
+  }
+
+  const addFavoritesNote = id => {
+    notes.find(note => note.id === id).favoritesStatus
+      ? setNotesFavorites([...notesFavorites, notes.find(note => note.id === id)])
+      : setNotesFavorites([...notesFavorites.filter(note => note.id !== id)])
   }
 
   return (
@@ -63,6 +79,8 @@ const Notes = () => {
           notes={notes.filter(note => note.header.toLowerCase().includes(searchText))}
           removeNote={removeNote}
           setSearchText={setSearchText}
+          addFavoritesNote={addFavoritesNote}
+          favoritesToggle={favoritesToggle}
         />
       }
     </>

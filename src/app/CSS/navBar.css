@@ -6,11 +6,11 @@
 }
 
 .nav-bar:hover {
-  box-shadow: 2px 2px 6px #147980;
+  box-shadow: 2px 2px 6px #000;
 }
 
 .nav-bar:active {
-  box-shadow: 2px 2px 1px #147980;
+  box-shadow: 2px 2px 1px #000;
 }
 
 .nav-bar .nav-link {
