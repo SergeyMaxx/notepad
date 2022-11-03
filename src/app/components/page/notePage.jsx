@@ -1,13 +1,27 @@
 import React, {useState} from 'react'
-import PropTypes from 'prop-types'
 import '../../CSS/note.css'
-import {useHistory} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import EditNoteModal from '../editNoteModal'
+import {change, getNotes} from '../../Store/notes'
+import {useDispatch, useSelector} from 'react-redux'
 
-const NotePage = ({noteId, notes, editNote}) => {
+const NotePage = () => {
+  const notes = useSelector(getNotes())
   const [modalActive, setModalActive] = useState(false)
   const history = useHistory()
+  const params = useParams()
+  const {noteId} = params
+  const dispatch = useDispatch()
+
   const getById = notes.find(note => note.id === noteId)
+
+  const editNote = (userInput, userInputHeader) => {
+    dispatch(change({
+      id: noteId,
+      newNote: userInput,
+      header: userInputHeader
+    }))
+  }
 
   return (
     <div
@@ -49,12 +63,6 @@ const NotePage = ({noteId, notes, editNote}) => {
       </div>
     </div>
   )
-}
-
-NotePage.propTypes = {
-  noteId: PropTypes.string,
-  notes: PropTypes.array,
-  editNote: PropTypes.func
 }
 
 export default NotePage

@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import Modal from './modal'
-import PropTypes from 'prop-types'
 
-const AddNote = ({addNote}) => {
+const AddNote = () => {
   const [modalActive, setModalActive] = useState(false)
 
   return (
@@ -17,15 +16,9 @@ const AddNote = ({addNote}) => {
       <Modal
         active={modalActive}
         setActive={setModalActive}
-        addNote={addNote}
       />
     </div>
-
   )
-}
-
-AddNote.propTypes = {
-  addNote: PropTypes.func
 }
 
 export default AddNote

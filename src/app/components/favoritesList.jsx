@@ -1,28 +1,14 @@
 import React, {useState} from 'react'
-import {useNote} from './noteContext'
 import SideBar from './sideBar'
 import Search from './search'
-import Note from './note'
 import '../CSS/favorites.css'
-import NoteFavorites from './noteFavorites'
+import NoteFavorites from './notes/noteFavorites'
+import {useSelector} from 'react-redux'
+import {getFavoritesNotes} from '../Store/notes'
 
 const FavoritesList = () => {
   const [searchText, setSearchText] = useState('')
-  const {notes} = useNote()
-  const {setNotes} = useNote()
-  const {notesFavorites} = useNote()
-  const {setNotesFavorites} = useNote()
-
-  const notesFavoritesOff = id => {
-    const newStatusFavorites = notesFavorites.find(note => note.id === id)
-    newStatusFavorites.favoritesStatus = !newStatusFavorites.favoritesStatus
-    setNotesFavorites([...notesFavorites])
-    setNotes([...notes])
-  }
-
-  const deleteFavoritesNote = id => {
-    setNotesFavorites([...notesFavorites.filter(note => note.id !== id)])
-  }
+  const notesFavorites = useSelector(getFavoritesNotes())
 
   return (
     <>
@@ -37,20 +23,12 @@ const FavoritesList = () => {
         </p>
       </div>
       <div className="container list">
-        <div
-          className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3"
-          style={{marginLeft: 16}}
-        >
+        <div className="row">
           {notesFavorites.filter(note => note.header.toLowerCase().includes(searchText))
             .map(note => (
-              <React.Fragment key={note.id}>
-                <NoteFavorites
-                  note={note}
-                  noteHistory={`favorites/${note.id}`}
-                  favoritesToggle={notesFavoritesOff}
-                  optionFavoritesNote={deleteFavoritesNote}
-                />
-              </React.Fragment>
+              <div className="col mb-3" key={note.id}>
+                <NoteFavorites note={note}/>
+              </div>
             ))}
         </div>
       </div>

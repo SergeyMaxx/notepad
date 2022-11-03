@@ -34,6 +34,10 @@ const SideBar = () => {
           <button className="link" onClick={() => ''}>
             <i className="bi bi-moon me-3"/>
             Тема
+            <label className="rainbow-checkbox">
+              <input type="checkbox"/>
+              <span> </span>
+            </label>
           </button>
         </div>
       </div>

@@ -1,13 +1,28 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import '../../CSS/note.css'
-import {useHistory} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import EditNoteModal from '../editNoteModal'
+import {changeFavoritesNote, getFavoritesNotes} from '../../Store/notes'
+import {useDispatch, useSelector} from 'react-redux'
 
-const FavoritesPage = ({favoritesNoteId, notesFavorites, editNote}) => {
+const FavoritesPage = () => {
+  const notesFavorites = useSelector(getFavoritesNotes())
   const [modalActive, setModalActive] = useState(false)
   const history = useHistory()
+  const params = useParams()
+  const {favoritesNoteId} = params
+  const dispatch = useDispatch()
+
   const getById = notesFavorites.find(note => note.id === favoritesNoteId)
+
+  const editNote = (userInput, userInputHeader) => {
+    dispatch(changeFavoritesNote({
+      id: favoritesNoteId,
+      newNote: userInput,
+      header: userInputHeader
+    }))
+  }
 
   return (
     <div

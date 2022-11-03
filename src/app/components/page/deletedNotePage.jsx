@@ -1,10 +1,15 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import '../../CSS/note.css'
-import {useHistory} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
+import {useSelector} from 'react-redux'
+import {getBasketNotes} from '../../Store/notes'
 
-const DeletedNotePage = ({deletedNoteId, notesBasket}) => {
+const DeletedNotePage = () => {
+  const notesBasket = useSelector(getBasketNotes())
   const history = useHistory()
+  const params = useParams()
+  const {deletedNoteId} = params
+
   const getById = notesBasket.find(note => note.id === deletedNoteId)
 
   return (
@@ -34,11 +39,6 @@ const DeletedNotePage = ({deletedNoteId, notesBasket}) => {
       </div>
     </div>
   )
-}
-
-DeletedNotePage.propTypes = {
-  deletedNoteId: PropTypes.string,
-  notesBasket: PropTypes.array
 }
 
 export default DeletedNotePage

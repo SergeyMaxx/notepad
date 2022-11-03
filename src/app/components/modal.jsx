@@ -1,13 +1,41 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import '../CSS/modal.css'
+import {createNote} from '../Store/notes'
+import {useDispatch} from 'react-redux'
 
-const Modal = ({active, setActive, addNote}) => {
+const Modal = ({active, setActive}) => {
   const [userInput, setUserInput] = useState('')
   const [userInputHeader, setUserInputHeader] = useState('')
+  const dispatch = useDispatch()
 
   const characterLimit = 800
   const headerCharacterLimit = 40
+
+  const arrColor = [
+    'text-bg-primary',
+    'text-bg-secondary',
+    'text-bg-success',
+    'text-bg-danger',
+    'text-bg-info'
+  ]
+
+  const randomNum = () => Math.floor(Math.random() * arrColor.length)
+  const index = arrColor.indexOf(arrColor[randomNum(0, arrColor.length - 1)])
+
+  const addNote = (userInput, userInputHeader) => {
+    if (userInput || userInputHeader) {
+      dispatch(createNote({
+        id: Math.random().toString(36).substr(2, 9),
+        newNote: userInput,
+        header: userInputHeader,
+        noteColor: arrColor[index],
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString(),
+        favoritesStatus: false
+      }))
+    }
+  }
 
   const handleChange = ({target}) => {
     if (characterLimit - target.value.length >= 0) {
@@ -76,8 +104,7 @@ const Modal = ({active, setActive, addNote}) => {
 
 Modal.propTypes = {
   active: PropTypes.bool.isRequired,
-  setActive: PropTypes.func.isRequired,
-  addNote: PropTypes.func
+  setActive: PropTypes.func.isRequired
 }
 
 export default Modal

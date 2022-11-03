@@ -1,18 +1,21 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
 import PropTypes from 'prop-types'
+import {favoritesOff, removeFavorites} from '../../Store/notes'
+import {useDispatch} from 'react-redux'
 
-const NoteFavorites = ({note, noteHistory, favoritesToggle, optionFavoritesNote}) => {
+const NoteFavorites = ({note}) => {
   const history = useHistory()
+  const dispatch = useDispatch()
 
   const toggleFavorites = () => {
-    favoritesToggle(note.id)
-    optionFavoritesNote(note.id)
+    dispatch(favoritesOff({id: note.id}))
+    dispatch(removeFavorites({id: note.id}))
   }
 
   return (
     <div
-      className={`card ${note.noteColor} card-hover col me-3`}
+      className={`card ${note.noteColor} card-hover col`}
       style={{width: '19rem', height: '16rem'}}
     >
       <div className="card-body relative-card">
@@ -28,7 +31,7 @@ const NoteFavorites = ({note, noteHistory, favoritesToggle, optionFavoritesNote}
         </div>
         <button
           className="btn btn-outline-light position-open"
-          onClick={() => history.push(`/${noteHistory}`)}
+          onClick={() => history.push(`/favorites/${note.id}`)}
         >
           <i className="bi bi-book"/>
         </button>
@@ -44,10 +47,7 @@ const NoteFavorites = ({note, noteHistory, favoritesToggle, optionFavoritesNote}
 }
 
 NoteFavorites.propTypes = {
-  note: PropTypes.object,
-  noteHistory: PropTypes.string,
-  optionFavoritesNote: PropTypes.func,
-  favoritesToggle: PropTypes.func
+  note: PropTypes.object
 }
 
 export default NoteFavorites

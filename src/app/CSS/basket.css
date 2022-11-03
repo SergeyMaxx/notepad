@@ -21,7 +21,3 @@
 .button-delete:hover {
   box-shadow: 2px 2px 6px #147980;
 }
-
-.button-delete:active {
-  box-shadow: 2px 2px 1px #147980;
-}

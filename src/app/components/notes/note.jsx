@@ -1,36 +1,29 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import '../CSS/note.css'
+import '../../CSS/note.css'
 import {useHistory} from 'react-router-dom'
-import ModalConfirmation from './modalConfirmation'
+import ModalConfirmation from '../modalConfirmation'
+import {addFavorites, noteDelete, toggleFavorites} from '../../Store/notes'
+import {useDispatch} from 'react-redux'
 
-const Note = ({
-                note,
-                remove,
-                noteHistory,
-                text,
-                icon,
-                buttonText,
-                favoritesToggle,
-                optionFavoritesNote
-              }) => {
-
+const Note = ({note}) => {
   const history = useHistory()
   const [modalActive, setModalActive] = useState(false)
+  const dispatch = useDispatch()
 
   const removeNote = () => {
     setModalActive(false)
-    remove(note.id)
+    dispatch(noteDelete({id: note.id}))
   }
 
-  const toggleFavorites = () => {
-    favoritesToggle(note.id)
-    optionFavoritesNote(note.id)
+  const favoritesToggle = () => {
+    dispatch(toggleFavorites({id: note.id}))
+    dispatch(addFavorites({id: note.id}))
   }
 
   return (
     <div
-      className={`card ${note.noteColor} card-hover col me-3`}
+      className={`card ${note.noteColor} card-hover`}
       style={{width: '19rem', height: '16rem'}}
     >
       <div className="card-body relative-card">
@@ -46,13 +39,13 @@ const Note = ({
         </div>
         <button
           className="btn btn-outline-light position-open"
-          onClick={() => history.push(`/${noteHistory}`)}
+          onClick={() => history.push(`/${note.id}`)}
         >
           <i className="bi bi-book"/>
         </button>
         <button
           className="btn btn-outline-light position-favorites"
-          onClick={toggleFavorites}
+          onClick={favoritesToggle}
         >
           <i className={note.favoritesStatus ? 'bi bi-heart-fill' : 'bi bi-heart'}/>
         </button>
@@ -60,14 +53,14 @@ const Note = ({
           className="btn btn-outline-light position-remove"
           onClick={() => setModalActive(true)}
         >
-          <i className={icon}/>
+          <i className="bi bi-trash"/>
         </button>
         <ModalConfirmation
           active={modalActive}
           setActive={setModalActive}
           remove={removeNote}
-          confirmationText={text}
-          buttonText={buttonText}
+          confirmationText="Вы точно хотите удалить заметку ?"
+          buttonText="Удалить"
         />
       </div>
     </div>
@@ -75,14 +68,7 @@ const Note = ({
 }
 
 Note.propTypes = {
-  note: PropTypes.object,
-  remove: PropTypes.func,
-  noteHistory: PropTypes.string,
-  text: PropTypes.string,
-  icon: PropTypes.string,
-  buttonText: PropTypes.string,
-  optionFavoritesNote: PropTypes.func,
-  favoritesToggle: PropTypes.func
+  note: PropTypes.object
 }
 
 export default Note
