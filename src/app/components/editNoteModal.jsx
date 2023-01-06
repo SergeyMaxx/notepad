@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import '../CSS/modal.css'
 
 const EditNoteModal = ({active, setActive, editNote, valueHeader, valueNote}) => {
-
   const [userInput, setUserInput] = useState(valueNote)
   const [userInputHeader, setUserInputHeader] = useState(valueHeader)
 

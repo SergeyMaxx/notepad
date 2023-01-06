@@ -14,7 +14,6 @@ const Search = ({setSearchText}) => {
         placeholder="Search..."
       />
     </div>
-
   )
 }
 
